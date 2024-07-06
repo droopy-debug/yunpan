@@ -10,5 +10,11 @@
     <select id="findUser" parameterType="com.qst.yunpan.pojo.User" resultType="com.qst.yunpan.pojo.User">
         select * from user where username = #{username} and password = #{password}
     </select>
+    <update id="reSize">
+        update user set countSize = #{formatSize} where username = #{username}
+    </update>
+    <select id="getCountSize" parameterType="java.lang.String" resultType="java.lang.String">
+        select countSize from user where username = #{username}
+    </select>
 </mapper>
 

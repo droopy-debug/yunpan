@@ -1,15 +1,24 @@
 package com.qst.yunpan.service;
 
+import com.qst.yunpan.dao.OfficeDao;
 import com.qst.yunpan.dao.UserDao;
+import com.qst.yunpan.pojo.FileCustom;
 import com.qst.yunpan.pojo.User;
+import com.qst.yunpan.utils.FileUtils;
+import com.qst.yunpan.utils.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class FileService {
+    @Autowired
+    private OfficeDao OfficeDao;
 
     //文件相对前缀
     public static final String PREFIX = "WEB-INF" + File.separator + "file" + File.separator;
@@ -29,6 +38,122 @@ public class FileService {
     public String getRootPath(HttpServletRequest request) {
         String rootPath = request.getSession().getServletContext().getRealPath("/") + PREFIX;
         return rootPath;
+    }
+
+    /**
+     * 获取文件路径
+     *
+     * @param request
+     * @param fileName
+     * @return
+     */
+    public String getFileName(HttpServletRequest request, String fileName) {
+        fileName= fileName.replace("\\", "//");
+        if (fileName == null||fileName.equals("\\")) {
+            System.out.println(1);
+            fileName = "";
+        }
+        String username = UserUtils.getUsername(request);
+        String realpath=getRootPath(request) + username + File.separator + fileName;
+        return realpath;
+    }
+
+    /**
+     * 根据用户名获取文件路径
+     *
+     * @param request
+     * @param fileName
+     * @param username
+     * @return
+     */
+    public String getFileName(HttpServletRequest request, String fileName, String username) {
+        if (username == null) {
+            return getFileName(request, fileName);
+        }
+        if (fileName == null) {
+            fileName = "";
+        }
+        return getRootPath(request) + username + File.separator + fileName;
+    }
+
+    public List<FileCustom> listFile(String realPath) {
+        File[] files = new File(realPath).listFiles();
+        List<FileCustom> lists = new ArrayList<FileCustom>();
+        if (files != null) {
+            for (File file : files) {
+                if (!file.getName().equals(User.RECYCLE)) {
+                    FileCustom custom = new FileCustom();
+                    custom.setFileName(file.getName());
+                    custom.setLastTime(FileUtils.formatTime(file.lastModified()));
+                    custom.setCurrentPath(realPath);
+                    if (file.isDirectory()) {
+                        custom.setFileSize("-");
+                    } else {
+                        custom.setFileSize(FileUtils.getDataSize(file.length()));
+                    }
+                    custom.setFileType(FileUtils.getFileType(file));
+                    lists.add(custom);
+                }
+            }
+        }
+        return lists;
+    }
+
+    /**
+     * 上传文件至前端页面中的当前路径
+     * @param request
+     * @param files
+     * @param currentPath
+     * @throws Exception
+     */
+    public void uploadFilePath(HttpServletRequest request, MultipartFile[] files, String currentPath) throws Exception {
+        for (MultipartFile file : files) {
+            String fileName = file.getOriginalFilename();
+            String filePath = getFileName(request, currentPath);
+            File distFile = new File(filePath, fileName);
+            if (!distFile.exists()) {
+                file.transferTo(distFile);
+                if ("office".equals(FileUtils.getFileType(distFile))) {
+                    try {
+                        String suffix = fileName.substring(fileName.lastIndexOf(".") + 1);
+                        String documentId = FileUtils.getDocClient().createDocument(distFile, fileName, suffix).getDocumentId();
+                        OfficeDao.addOffice(documentId, FileUtils.MD5(distFile));
+                    } catch (Exception e) {
+                    }
+                }
+            }
+        }
+        reSize(request);//reSize的定义与实现在下一个任务点完成
+    }
+
+    public void reSize(HttpServletRequest request) {
+        String userName = UserUtils.getUsername(request);
+        try {
+            userDao.reSize(userName, countFileSize(request));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String countFileSize(HttpServletRequest request) {
+        long countFileSize = countFileSize(new File(getFileName(request, null)));
+        return FileUtils.getDataSize(countFileSize);
+    }
+    private long countFileSize(File srcFile) {                             //计算该用户已上传文件的总大小
+        File[] listFiles = srcFile.listFiles();
+        if (listFiles == null) {
+            return 0;
+        }
+        long count = 0;
+        for (File file : listFiles) {
+            if (file.isDirectory()) {
+                count += countFileSize(file);
+            } else {
+                count += file.length();
+            }
+        }
+        return count;
+
     }
 
 }

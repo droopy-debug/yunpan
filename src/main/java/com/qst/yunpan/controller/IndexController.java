@@ -15,6 +15,8 @@ public class IndexController {                          //进入主页面的预�
     @RequestMapping("/index")
     public String index(HttpServletRequest request){
         String username = UserUtils.getUsername(request);
+        String countSize = userService.getCountSize(username);
+        request.setAttribute("countSize", countSize);                                     //传给前端
         return "index";
     }
 }
