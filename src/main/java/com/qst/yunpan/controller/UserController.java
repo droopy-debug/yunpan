@@ -47,6 +47,9 @@ public class UserController {
         }
         User exsitUser = UserService.findUser(user);
         if(exsitUser != null){
+
+            System.out.println(user.getUsername() + user.getPassword() + "pause 1");
+
             HttpSession session = request.getSession();
             session.setAttribute(User.NAMESPACE, exsitUser.getUsername());
             session.setAttribute("totalSize", exsitUser.getTotalSize());
