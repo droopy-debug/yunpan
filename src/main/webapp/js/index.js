@@ -1,4 +1,7 @@
 /**当前文件路径指针*/
+
+<script src="${pageContext.request.contextPath }/js/ckplayer/ckplayer.js"> </script>
+
 var currentPath;
 	$(document).ready(function() {
 		getFiles("\\");

@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -129,6 +131,8 @@ public class FileController {
     @RequestMapping("/delDirectory")
     public @ResponseBody Result<String> delDirectory(String currentPath,String[] directoryName) {
         try {
+            System.out.println("Current Path: " + currentPath);
+            System.out.println("Directory Names: " + Arrays.toString(directoryName));
             fileService.delDirectory(request, currentPath, directoryName);
             return new Result<>(346, true, "删除成功");
         } catch (Exception e) {
@@ -241,6 +245,24 @@ public class FileController {
             return new Result<>(322, false, "删除失败");
         }
     }
+
+    @RequestMapping("/openFile")
+    public void openFile(HttpServletResponse response, String currentPath, String fileName, String fileType) {          //接受和处理在线图片/txt预览功能
+        try {
+            fileService.respFile(response, request, currentPath, fileName, fileType);
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping("/openAudioPage")
+    public String openAudioPage(Model model, String currentPath, String fileName) {
+        model.addAttribute("currentPath", currentPath);
+        model.addAttribute("fileName", fileName);
+        return "audio";
+    }
+
+
 
 
 

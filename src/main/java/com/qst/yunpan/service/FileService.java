@@ -9,11 +9,17 @@ import com.qst.yunpan.pojo.SummaryFile;
 import com.qst.yunpan.pojo.User;
 import com.qst.yunpan.utils.FileUtils;
 import com.qst.yunpan.utils.UserUtils;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.nio.channels.FileChannel;
 import java.nio.file.Path;
@@ -92,18 +98,39 @@ public class FileService {
 //        return realpath.toString();
 //    }
     public String getFileName(HttpServletRequest request, String fileName) {
-        System.out.println("fileName before replace: " + fileName);
-        fileName= fileName.replace("\\", "/");
-        if (fileName == null||fileName.equals("\\")) {
+////        System.out.println("fileName before replace: " + fileName);
+//        fileName= fileName.replace("\\", "/");
+//        if (fileName == null||fileName.equals("\\")) {
+//            System.out.println(1);
+//            fileName = "";
+//        }
+//        //System.out.println("fileName after replace: " + fileName);
+//        String username = UserUtils.getUsername(request);
+//        String realpath=getRootPath(request) + username + File.separator + fileName;
+//        //realpath = realpath.replace("\\\\", "\\");
+//        System.out.println("realpath: " + realpath);
+//        return realpath;
+
+//        fileName= fileName.replace("\\", "//");
+//        if (fileName == null||fileName.equals("\\")) {
+//            System.out.println(1);
+//            fileName = "";
+//        }
+        if (fileName == null) {
+            fileName = "";
+        } else {
+            fileName = fileName.replace("\\", "/");
+        }
+
+        if (fileName.equals("\\")) {
             System.out.println(1);
             fileName = "";
         }
-        System.out.println("fileName after replace: " + fileName);
+
         String username = UserUtils.getUsername(request);
         String realpath=getRootPath(request) + username + File.separator + fileName;
-        //realpath = realpath.replace("\\\\", "\\");
-        System.out.println("realpath: " + realpath);
         return realpath;
+
     }
     /**
      * 根据用户名获取文件路径
@@ -158,14 +185,17 @@ public class FileService {
     public void reSize(HttpServletRequest request) {
         String userName = UserUtils.getUsername(request);
         try {
-            userDao.reSize(userName, countFileSize(request));
+
+            String readblesize = countFileSize(request);
+            //System.out.println("public void reSize(HttpServletRequest request):readablesize"+readblesize);
+            userDao.reSize(userName, readblesize);
 //            // 统计文件大小
 //            long totalSize = countFileSize(new File(getFileName(request, userName)));
 //            // 将大小转换为适当的单位（例如 MB, GB 等）
 //            String readableSize = FileUtils.getDataSize(totalSize);
 //            // 更新数据库
-//            System.out.println();System.out.println();System.out.println();
-//            System.out.println("capacity:" + readableSize);
+//            System.out.println();
+//            System.out.println(" public void reSize(HttpServletRequest request) |capacity:" + readableSize);
 //            userDao.reSize(userName, readableSize);
         } catch (Exception e) {
             e.printStackTrace();
@@ -180,20 +210,22 @@ public class FileService {
      * @return
      */
     public String countFileSize(HttpServletRequest request) {
-//        long countFileSize = countFileSize(new File(getFileName(request, null)));
-//        return FileUtils.getDataSize(countFileSize);
+        long countFileSize = countFileSize(new File(getFileName(request, null)));
+        //System.out.println("public String countFileSize |countSize::" + countFileSize);
+        return FileUtils.getDataSize(countFileSize);
 
-        String userName = UserUtils.getUsername(request);
-        String filePath = getFileName(request, userName);
-        File userDirectory = new File(filePath);
-
-
-        long totalFileSize = countFileSize(userDirectory);
-        return FileUtils.getDataSize(totalFileSize);
+//        String userName = UserUtils.getUsername(request);
+//        String filePath = getFileName(request, userName);
+//        File userDirectory = new File(filePath);
+//
+//
+//        long totalFileSize = countFileSize(userDirectory);
+//        return FileUtils.getDataSize(totalFileSize);
     }
     private long countFileSize(File srcFile) {
         File[] listFiles = srcFile.listFiles();
         if (listFiles == null) {
+            //System.out.println("private long countFileSize : " + "ListFIles == NULL");
             return 0;
         }
         long count = 0;
@@ -204,6 +236,7 @@ public class FileService {
                 count += file.length();
             }
         }
+        System.out.println("private long countFileSize ||count:" + count);
         return count;
     }
 
@@ -376,7 +409,19 @@ public class FileService {
             }
         }
     }
-
+//        for (String fileName : directoryName) {
+//            //拼接源文件的地址
+//            String srcPath = currentPath + File.separator + fileName;
+//            //根据源文件相对地址拼接 绝对路径
+//            File src = new File(getFileName(request, srcPath));//即将删除的文件地址
+//            File dest = new File(getRecyclePath(request));//回收站目录地址
+//            //调用commons.jar包中的moveToDirectory移动文件,移至回收站目录
+//            org.apache.commons.io.FileUtils.moveToDirectory(src, dest, true);
+//            //保存本条删除信息
+//            fileDao.insertFiles(srcPath, UserUtils.getUsername(request));
+//        }
+//        //重新计算文件大小
+//        reSize(request);
 
     /**
      * 删除文件
@@ -389,19 +434,53 @@ public class FileService {
      * @throws Exception
      */
     public void delDirectory(HttpServletRequest request, String currentPath, String[] directoryName) throws Exception {
-        for (String fileName : directoryName) {
-            //拼接源文件的地址
-            String srcPath = currentPath + File.separator + fileName;
-            //根据源文件相对地址拼接 绝对路径
-            File src = new File(getFileName(request, srcPath));//即将删除的文件地址
-            File dest = new File(getRecyclePath(request));//回收站目录地址
-            //调用commons.jar包中的moveToDirectory移动文件,移至回收站目录
-            org.apache.commons.io.FileUtils.moveToDirectory(src, dest, true);
-            //保存本条删除信息
-            fileDao.insertFiles(srcPath, UserUtils.getUsername(request));
+
+        String username = UserUtils.getUsername(request);
+        String rootPath = getRootPath(request);
+        System.out.println("rootPath:  "+ rootPath);
+        String recyclePath = rootPath + username+File.separator + "recycle"; // 假设有一个回收站目录
+        System.out.println("recyclePath:  "+recyclePath);
+
+        for (String dir : directoryName) {
+            File directory = new File(rootPath +username +File.separator + currentPath +File.separator+ File.separator + dir);
+            System.out.println("directory:  " + directory);
+            if(directory.exists()) System.out.println("我在");
+            else System.out.println("我不在");
+            if (directory.exists() ) {
+                File recycleDir = new File(recyclePath + File.separator );
+                String uuu = currentPath + File.separator + dir;
+                String okl = recyclePath + File.separator+dir;
+                System.out.println("okl ; " + okl);
+                Path path = Paths.get(okl);
+
+
+                // 检查回收站目录是否已经存在
+                if (recycleDir.exists()) {
+                    System.out.println("recycleDir:   "+ recycleDir);
+                    // 删除回收站中的目标目录
+                    if(Files.exists(path))
+                    {
+                        Files.delete(path);
+                        fileDao.delete(uuu,UserUtils.getUsername(request));
+                    }
+//                    if (recycleDir.delete())
+//                        System.out.println("successful");
+//                    else System.out.println("faulse");
+
+                    System.out.println("Deleted existing directory in recycle bin: " + recycleDir.getAbsolutePath());
+                }
+
+                // 移动目录到回收站
+                //directory.move(directory, recycleDir);
+                org.apache.commons.io.FileUtils.moveToDirectory(directory, recycleDir, true);
+                fileDao.insertFiles(uuu, UserUtils.getUsername(request));
+                System.out.println("Moved directory to recycle bin: " + recycleDir.getAbsolutePath());
+            } else {
+                System.out.println("Directory does not exist or is not a directory: " + directory.getAbsolutePath());
+                throw new FileNotFoundException("Directory not found: " + directory.getAbsolutePath());
+            }
         }
-        //重新计算文件大小
-        reSize(request);
+
     }
     public String getRecyclePath(HttpServletRequest request) {
         return getFileName(request, User.RECYCLE);
@@ -505,8 +584,8 @@ public class FileService {
      *
      * @param srcFile
      *            源文件
-     * @param targetFile目标文件
-     * @throws IOException
+//     * @param targetFile目标文件
+//     * @throws IOException
      */
     private void copyfile(File srcFile, File targetFile) throws IOException {
         if (!srcFile.isDirectory()) {
@@ -652,6 +731,28 @@ public class FileService {
         reSize(request);
     }
 
+
+    /**
+     *
+     * @param response
+     * @param request
+     * @param currentPath
+     * @param fileName
+     * @param type
+     * @throws IOException
+     */
+    /*FileService类中添加respFile()方法，通过Apache的IOUtils.copy()方法对当前图片/txt文件进行读写。
+    前端将为txt文档传入对应的“docum”标识；当type变量为“docum”的时，则需要再做一次编码装换，以防止文本乱码，*/
+    public void respFile(HttpServletResponse response, HttpServletRequest request, String currentPath, String fileName, String type) throws IOException {
+        File file = new File(getFileName(request, currentPath), fileName);
+        InputStream inputStream = new FileInputStream(file);
+        if ("docum".equals(type)) {
+            response.setCharacterEncoding("UTF-8");
+            IOUtils.copy(inputStream, response.getWriter(), "UTF-8");
+        } else {
+            IOUtils.copy(inputStream, response.getOutputStream());
+        }
+    }
 
 
 }
