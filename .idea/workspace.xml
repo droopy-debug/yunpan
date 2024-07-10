@@ -4,12 +4,9 @@
     <list default="true" id="3325cc68-162e-4b04-8b84-9dc1e239387a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/qst/yunpan/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qst/yunpan/controller/FileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qst/yunpan/dao/FileDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qst/yunpan/dao/FileDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qst/yunpan/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qst/yunpan/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qst/yunpan/interceptor/LoignInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qst/yunpan/interceptor/LoignInterceptor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/qst/yunpan/service/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qst/yunpan/service/FileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/FileDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/FileDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring-mvc.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -27,13 +24,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/qst/yunpan/service/FileService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="122" column="9" selection-start-line="122" selection-start-column="9" selection-end-line="122" selection-end-column="9" />
+            <state relative-caret-position="162">
+              <caret line="793" column="4" selection-start-line="793" selection-start-column="4" selection-end-line="793" selection-end-column="4" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1497#1849#0" />
+                <element signature="e#1854#2034#0" />
+                <element signature="e#2040#2132#0" />
+                <element signature="e#2133#2211#0" />
+                <element signature="e#8947#9042#0" />
               </folding>
             </state>
           </provider>
@@ -42,8 +43,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mvc.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+            <state relative-caret-position="380">
+              <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -73,13 +74,19 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/qst/yunpan/interceptor/LoignInterceptor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            <state>
+              <caret column="35" selection-start-column="35" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="docComment;method#afterCompletion#0;class#LoignInterceptor#0" />
+                <element signature="method#afterCompletion#0;class#LoignInterceptor#0" />
+                <element signature="docComment;method#postHandle#0;class#LoignInterceptor#0" />
+                <element signature="method#postHandle#0;class#LoignInterceptor#0" />
+                <element signature="docComment;method#preHandle#0;class#LoignInterceptor#0" />
+                <element signature="method#preHandle#0;class#LoignInterceptor#0" />
               </folding>
             </state>
           </provider>
@@ -88,8 +95,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/qst/yunpan/dao/FileDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="106" />
+            <state relative-caret-position="247">
+              <caret line="16" column="74" selection-start-line="16" selection-start-column="74" selection-end-line="16" selection-end-column="74" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -98,57 +105,49 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/qst/yunpan/controller/FileController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/qst/yunpan/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="109" column="94" selection-start-line="109" selection-start-column="93" selection-end-line="109" selection-end-column="94" />
+            <state relative-caret-position="1444">
+              <caret line="108" column="4" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="4" />
               <folding>
-                <element signature="docComment;method#getFiles#0;class#FileController#0" />
-                <element signature="method#getFiles#0;class#FileController#0" />
-                <element signature="method#upload#0;class#FileController#0" />
-                <element signature="docComment;method#download#0;class#FileController#0" />
-                <element signature="method#download#0;class#FileController#0" />
-                <element signature="docComment;method#searchFile#0;class#FileController#0" />
-                <element signature="docComment;method#delDirectory#0;class#FileController#0" />
-                <element signature="docComment;method#renameDirectory#0;class#FileController#0" />
-                <element signature="method#renameDirectory#0;class#FileController#0" />
-                <element signature="method#summarylist#0;class#FileController#0" />
-                <element signature="method#copyDirectory#0;class#FileController#0" />
-                <element signature="docComment;method#moveDirectory#0;class#FileController#0" />
-                <element signature="method#moveDirectory#0;class#FileController#0" />
-                <element signature="n#!!doc;n#revertDirectory#0;n#FileController#0" />
-                <element signature="method#revertDirectory#0;class#FileController#0" />
-                <element signature="method#delAllRecycleDirectory#0;class#FileController#0" />
-                <element signature="method#openFile#0;class#FileController#0" />
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;method#getjson#0;class#UserController#0" />
+                <element signature="method#getjson#0;class#UserController#0" />
+                <element signature="docComment;method#registForApp#0;class#UserController#0" />
+                <element signature="method#registForApp#0;class#UserController#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/index.js">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/qst/yunpan/controller/FileController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="2" column="84" selection-start-line="2" selection-start-column="84" selection-end-line="2" selection-end-column="84" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/audio.jsp">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/qst/yunpan/pojo/RecycleFile.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="2071">
+              <caret line="308" column="4" selection-start-line="308" selection-start-column="4" selection-end-line="308" selection-end-column="4" />
               <folding>
-                <element signature="e#136#137#0" expanded="true" />
-                <element signature="e#165#166#0" expanded="true" />
-                <element signature="e#210#211#0" expanded="true" />
-                <element signature="e#246#247#0" expanded="true" />
+                <element signature="docComment;method#getFiles#0;class#FileController#0" />
+                <element signature="method#getFiles#0;class#FileController#0" />
+                <element signature="method#upload#0;class#FileController#0" />
+                <element signature="docComment;method#download#0;class#FileController#0" />
+                <element signature="docComment;method#searchFile#0;class#FileController#0" />
+                <element signature="docComment;method#delDirectory#0;class#FileController#0" />
+                <element signature="method#delDirectory#0;class#FileController#0" />
+                <element signature="docComment;method#renameDirectory#0;class#FileController#0" />
+                <element signature="method#renameDirectory#0;class#FileController#0" />
+                <element signature="method#summarylist#0;class#FileController#0" />
+                <element signature="method#copyDirectory#0;class#FileController#0" />
+                <element signature="docComment;method#moveDirectory#0;class#FileController#0" />
+                <element signature="method#moveDirectory#0;class#FileController#0" />
+                <element signature="method#recycleFile#0;class#FileController#0" />
+                <element signature="n#!!doc;n#revertDirectory#0;n#FileController#0" />
+                <element signature="method#revertDirectory#0;class#FileController#0" />
+                <element signature="method#delAllRecycleDirectory#0;class#FileController#0" />
+                <element signature="method#openFile#0;class#FileController#0" />
+                <element signature="docComment;method#getjson#0;class#FileController#0" />
+                <element signature="method#getjson#0;class#FileController#0" />
+                <element signature="docComment;method#uploadExt#0;class#FileController#0" />
+                <element signature="method#uploadExt#0;class#FileController#0" />
               </folding>
             </state>
           </provider>
@@ -191,6 +190,7 @@
       <find>filedao.dele</find>
       <find>&lt;script src=&quot;${pageContext.request.contextPath }/js/ckplayer/ckplayer.js&quot;&gt; &lt;/script&gt;</find>
       <find>getFilename</find>
+      <find>activity_login.xml</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -212,7 +212,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/applicationContext-dao.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/applicationContext-service.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/qst/yunpan/utils/UserUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qst/yunpan/interceptor/LoignInterceptor.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qst/yunpan/pojo/Filecustom.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qst/yunpan/pojo/result.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qst/yunpan/utils/FileUtils.java" />
@@ -225,7 +224,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/mapper/UserDao.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/OfficeDao.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/qst/yunpan/controller/IndexController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qst/yunpan/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qst/yunpan/dao/File.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qst/yunpan/pojo/SummaryFile.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qst/yunpan/pojo/Share.java" />
@@ -239,9 +237,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/qst/yunpan/dao/FileDao.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/FileDao.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/index.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qst/yunpan/interceptor/LoignInterceptor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qst/yunpan/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qst/yunpan/controller/FileController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qst/yunpan/service/FileService.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" />
       </list>
     </option>
   </component>
@@ -278,7 +278,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -322,176 +321,11 @@
               <item name="yunpan" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="yunpan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yunpan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="interceptor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yunpan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="pojo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yunpan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yunpan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yunpan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yunpan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yunpan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yunpan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yunpan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yunpan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="file" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yunpan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="file" type="462c0819:PsiDirectoryNode" />
-              <item name="no.1" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yunpan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="jsp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yunpan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yunpan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yunpan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yunpan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="qst" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yunpan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="qst" type="462c0819:PsiDirectoryNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yunpan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yunpan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yunpan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yunpan" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="generated-sources" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -589,7 +423,14 @@
       <option name="project" value="LOCAL" />
       <updated>1720404148393</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="login and regist">
+      <created>1720489740020</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1720489740020</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView">
@@ -602,9 +443,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49868765" visible="true" weight="0.1684435" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49868765" visible="true" weight="0.084754795" />
       <window_info id="Structure" order="1" sideWeight="0.5013123" side_tool="true" weight="0.12846482" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -613,12 +454,12 @@
       <window_info id="Favorites" order="6" sideWeight="0.5013123" side_tool="true" weight="0.12846482" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32939914" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6002132" weight="0.2671674" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6002132" visible="true" weight="0.75965667" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32939914" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.4989339" visible="true" weight="0.18562232" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4989339" weight="0.18542336" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.39978677" side_tool="true" weight="0.79613733" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32939914" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.5565032" weight="0.24034335" />
@@ -994,16 +835,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qst/yunpan/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="50" column="80" selection-start-line="50" selection-start-column="80" selection-end-line="50" selection-end-column="80" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qst/yunpan/dao/UserDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
@@ -1049,16 +880,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qst/yunpan/service/FileService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="122" column="9" selection-start-line="122" selection-start-column="9" selection-end-line="122" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qst/yunpan/pojo/FileCustom.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -1092,6 +913,98 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qst/yunpan/pojo/RecycleFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#136#137#0" expanded="true" />
+            <element signature="e#165#166#0" expanded="true" />
+            <element signature="e#210#211#0" expanded="true" />
+            <element signature="e#246#247#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/audio.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="84" selection-start-line="2" selection-start-column="84" selection-end-line="2" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qst/yunpan/service/FileService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="793" column="4" selection-start-line="793" selection-start-column="4" selection-end-line="793" selection-end-column="4" />
+          <folding>
+            <element signature="e#1497#1849#0" />
+            <element signature="e#1854#2034#0" />
+            <element signature="e#2040#2132#0" />
+            <element signature="e#2133#2211#0" />
+            <element signature="e#2040#4795#0" />
+            <element signature="e#4402#4440#1" />
+            <element signature="e#4800#4920#0" />
+            <element signature="e#4800#5258#0" />
+            <element signature="e#5264#5391#0" />
+            <element signature="e#5264#6379#0" />
+            <element signature="e#6385#6441#0" />
+            <element signature="e#6385#7397#0" />
+            <element signature="e#7403#7474#0" />
+            <element signature="e#7403#8061#0" />
+            <element signature="e#7275#7339#0" />
+            <element signature="e#7275#7914#0" />
+            <element signature="e#7928#7989#0" />
+            <element signature="e#7928#8941#0" />
+            <element signature="e#8947#9042#0" />
+            <element signature="e#9607#10255#0" />
+            <element signature="e#9605#9778#0" />
+            <element signature="e#10261#11148#0" />
+            <element signature="e#11155#11278#0" />
+            <element signature="e#11155#12192#0" />
+            <element signature="e#12199#12259#0" />
+            <element signature="e#12199#12423#0" />
+            <element signature="e#12429#12590#0" />
+            <element signature="e#12429#12907#0" />
+            <element signature="e#12913#13293#0" />
+            <element signature="e#13299#14864#0" />
+            <element signature="e#14865#14914#0" />
+            <element signature="e#15498#15674#0" />
+            <element signature="e#15498#18099#0" />
+            <element signature="e#18226#18365#0" />
+            <element signature="e#18226#18726#0" />
+            <element signature="e#18732#18873#0" />
+            <element signature="e#18732#20051#0" />
+            <element signature="e#20058#21596#0" />
+            <element signature="e#21602#21738#0" />
+            <element signature="e#21602#22584#0" />
+            <element signature="e#22592#22825#0" />
+            <element signature="e#22592#24406#0" />
+            <element signature="e#24413#24512#0" />
+            <element signature="e#24413#25129#0" />
+            <element signature="e#25137#25641#0" />
+            <element signature="e#25904#26346#1" />
+            <element signature="e#26359#26815#0" />
+            <element signature="e#26822#26980#0" />
+            <element signature="e#27679#27798#0" />
+            <element signature="e#27679#29052#0" />
+            <element signature="e#28102#28114#0" expanded="true" />
+            <element signature="e#28567#28740#0" />
+            <element signature="e#28567#29650#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mvc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qst/yunpan/pojo/SummaryFile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
@@ -1113,78 +1026,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qst/yunpan/dao/FileDao.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qst/yunpan/interceptor/LoignInterceptor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="106" />
+        <state>
+          <caret column="35" selection-start-column="35" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="docComment;method#afterCompletion#0;class#LoignInterceptor#0" />
+            <element signature="method#afterCompletion#0;class#LoignInterceptor#0" />
+            <element signature="docComment;method#postHandle#0;class#LoignInterceptor#0" />
+            <element signature="method#postHandle#0;class#LoignInterceptor#0" />
+            <element signature="docComment;method#preHandle#0;class#LoignInterceptor#0" />
+            <element signature="method#preHandle#0;class#LoignInterceptor#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qst/yunpan/dao/FileDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="16" column="74" selection-start-line="16" selection-start-column="74" selection-end-line="16" selection-end-column="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qst/yunpan/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1444">
+          <caret line="108" column="4" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;method#getjson#0;class#UserController#0" />
+            <element signature="method#getjson#0;class#UserController#0" />
+            <element signature="docComment;method#registForApp#0;class#UserController#0" />
+            <element signature="method#registForApp#0;class#UserController#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qst/yunpan/controller/FileController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="109" column="94" selection-start-line="109" selection-start-column="93" selection-end-line="109" selection-end-column="94" />
+        <state relative-caret-position="2071">
+          <caret line="308" column="4" selection-start-line="308" selection-start-column="4" selection-end-line="308" selection-end-column="4" />
           <folding>
             <element signature="docComment;method#getFiles#0;class#FileController#0" />
             <element signature="method#getFiles#0;class#FileController#0" />
             <element signature="method#upload#0;class#FileController#0" />
             <element signature="docComment;method#download#0;class#FileController#0" />
-            <element signature="method#download#0;class#FileController#0" />
             <element signature="docComment;method#searchFile#0;class#FileController#0" />
             <element signature="docComment;method#delDirectory#0;class#FileController#0" />
+            <element signature="method#delDirectory#0;class#FileController#0" />
             <element signature="docComment;method#renameDirectory#0;class#FileController#0" />
             <element signature="method#renameDirectory#0;class#FileController#0" />
             <element signature="method#summarylist#0;class#FileController#0" />
             <element signature="method#copyDirectory#0;class#FileController#0" />
             <element signature="docComment;method#moveDirectory#0;class#FileController#0" />
             <element signature="method#moveDirectory#0;class#FileController#0" />
+            <element signature="method#recycleFile#0;class#FileController#0" />
             <element signature="n#!!doc;n#revertDirectory#0;n#FileController#0" />
             <element signature="method#revertDirectory#0;class#FileController#0" />
             <element signature="method#delAllRecycleDirectory#0;class#FileController#0" />
             <element signature="method#openFile#0;class#FileController#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="84" selection-start-line="2" selection-start-column="84" selection-end-line="2" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/audio.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qst/yunpan/pojo/RecycleFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#136#137#0" expanded="true" />
-            <element signature="e#165#166#0" expanded="true" />
-            <element signature="e#210#211#0" expanded="true" />
-            <element signature="e#246#247#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mvc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qst/yunpan/interceptor/LoignInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="docComment;method#getjson#0;class#FileController#0" />
+            <element signature="method#getjson#0;class#FileController#0" />
+            <element signature="docComment;method#uploadExt#0;class#FileController#0" />
+            <element signature="method#uploadExt#0;class#FileController#0" />
           </folding>
         </state>
       </provider>

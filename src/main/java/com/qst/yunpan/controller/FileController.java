@@ -6,6 +6,7 @@ import com.qst.yunpan.pojo.RecycleFile;
 import com.qst.yunpan.pojo.Result;
 import com.qst.yunpan.pojo.SummaryFile;
 import com.qst.yunpan.service.FileService;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -22,8 +23,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/file")
@@ -32,12 +36,11 @@ public class FileController {
     private HttpServletRequest request;
     @Autowired
     private FileService fileService;
+
     /**
      * 获取文件列表
-     *
      * @param path
-     *            路径
-     * @return Json对象
+     * @return
      */
     @RequestMapping("/getFiles")
     public @ResponseBody
@@ -263,6 +266,69 @@ public class FileController {
     }
 
 
+    /**
+     * 移动端文件列表信息接口
+     * @param req
+     * @param rep
+     * @throws Exception
+     */
+    @RequestMapping("/getAppFiles")
+    public void getjson(HttpServletRequest req, HttpServletResponse rep)
+            throws Exception {
+        req.setCharacterEncoding("utf-8");
+        rep.setContentType("text/html;charset=utf-8");
+        String path = req.getParameter("path");
+        String username = req.getParameter("username");
+        String realPath = fileService.getFileName(request, path,username);
+        List<FileCustom> listFile = fileService.listFileForApp(realPath,request,username);
+        // Result<List<FileCustom>> resultList = new
+        // Result<List<FileCustom>>(325, true, "获取成功");
+        // resultList.setData(listFile);
+        // return result;
+
+        System.out.println("安卓端访问文件列表..............");
+
+        PrintWriter writer = rep.getWriter();
+        JSONObject object = new JSONObject();
+        if (listFile != null && listFile.size() > 0) {
+            //object.put("result", listFile);
+            object.put("ret", "1000");
+            object.put("msg", "查询成功");
+            object.put("data", listFile);
+        } else {
+            //object.put("result", "fail");// fail代表该目录下无文件
+            object.put("ret", "1001");
+            object.put("msg", "查询失败");
+        }
+        writer.println(object.toString());
+        writer.flush();
+        writer.close();
+    }
+
+
+    /**
+     * 文件上传接口android
+     * @param file
+     * @param currentPath
+     * @param username
+     * @return
+     */
+    @RequestMapping("/uploadForApp")
+    public @ResponseBody
+    Map<String,String> uploadExt(
+            @RequestParam("file") MultipartFile file, String currentPath,String username) {
+        Map<String,String> map = new HashMap<String,String>();
+        try {
+            fileService.uploadFilePathExt(request, file, currentPath,username);
+            map.put("ret", "1000");
+            map.put("msg", "上传成功");
+        } catch (Exception e) {
+            map.put("ret", "1001");
+            map.put("msg", "上传失败");
+            return map;
+        }
+        return map;
+    }
 
 
 

@@ -9,21 +9,42 @@ import javax.servlet.http.HttpServletResponse;
 
 public class LoignInterceptor implements HandlerInterceptor {                         //实现拦截器接口的类
 
-    // 请求处理完成后调用的方法
+    /**
+     * 请求处理完成后调用的方法
+     * @param arg0
+     * @param arg1
+     * @param arg2
+     * @param arg3
+     * @throws Exception
+     */
     @Override
     public void afterCompletion(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, Exception arg3)
             throws Exception {
 
     }
 
-    // 请求处理之后，生成视图之前调用的方法
+    /**
+     * 请求处理之后，生成视图之前调用的方法
+     * @param arg0
+     * @param arg1
+     * @param arg2
+     * @param arg3
+     * @throws Exception
+     */
     @Override
     public void postHandle(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, ModelAndView arg3)
             throws Exception {
 
     }
 
-    // 请求处理之前调用的方法
+    /**
+     * 请求处理之前调用的方法
+     * @param request
+     * @param response
+     * @param object
+     * @return
+     * @throws Exception
+     */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object object) throws Exception {
         String url = request.getRequestURI();

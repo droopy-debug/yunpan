@@ -98,24 +98,6 @@ public class FileService {
 //        return realpath.toString();
 //    }
     public String getFileName(HttpServletRequest request, String fileName) {
-////        System.out.println("fileName before replace: " + fileName);
-//        fileName= fileName.replace("\\", "/");
-//        if (fileName == null||fileName.equals("\\")) {
-//            System.out.println(1);
-//            fileName = "";
-//        }
-//        //System.out.println("fileName after replace: " + fileName);
-//        String username = UserUtils.getUsername(request);
-//        String realpath=getRootPath(request) + username + File.separator + fileName;
-//        //realpath = realpath.replace("\\\\", "\\");
-//        System.out.println("realpath: " + realpath);
-//        return realpath;
-
-//        fileName= fileName.replace("\\", "//");
-//        if (fileName == null||fileName.equals("\\")) {
-//            System.out.println(1);
-//            fileName = "";
-//        }
         if (fileName == null) {
             fileName = "";
         } else {
@@ -132,6 +114,7 @@ public class FileService {
         return realpath;
 
     }
+
     /**
      * 根据用户名获取文件路径
      *
@@ -222,6 +205,12 @@ public class FileService {
 //        long totalFileSize = countFileSize(userDirectory);
 //        return FileUtils.getDataSize(totalFileSize);
     }
+
+    /**
+     * 计算文件文件大小
+     * @param srcFile
+     * @return
+     */
     private long countFileSize(File srcFile) {
         File[] listFiles = srcFile.listFiles();
         if (listFiles == null) {
@@ -240,6 +229,11 @@ public class FileService {
         return count;
     }
 
+    /**
+     * 文件列表
+     * @param realPath
+     * @return
+     */
     public List<FileCustom> listFile(String realPath) {
         File[] files = new File(realPath).listFiles();
         List<FileCustom> lists = new ArrayList<FileCustom>();
@@ -286,7 +280,15 @@ public class FileService {
         return zipName;
     }
 
-    //判断用户是单一文件下载还是多个文件下载
+    /**
+     * 判断用户是单一文件下载还是多个文件下载
+     * @param request
+     * @param currentPath
+     * @param fileNames
+     * @param username
+     * @return
+     * @throws Exception
+     */
     public File downPackage(HttpServletRequest request, String currentPath, String[] fileNames, String username) throws Exception {
         File downloadFile = null;
         if (currentPath == null) {
@@ -752,6 +754,71 @@ public class FileService {
         } else {
             IOUtils.copy(inputStream, response.getOutputStream());
         }
+    }
+
+    /**
+     * 获取文件列表方法(android)
+     * @param realPath
+     * @param request
+     * @param username
+     * @return
+     */
+    public List<FileCustom> listFileForApp(String realPath,HttpServletRequest request,String username) {
+        String preFix = getRootPath(request) + username + File.separator;
+        //对文件操作  需要new出一个文件，代表指向该文件内存地址
+        File[] files = new File(realPath).listFiles();
+        List<FileCustom> lists = new ArrayList<FileCustom>();
+        if (files != null) {
+            for (File file : files) {
+                if (!file.getName().equals(User.RECYCLE)) {
+                    FileCustom custom = new FileCustom();
+                    custom.setFileName(file.getName());
+                    custom.setLastTime(FileUtils.formatTime(file.lastModified()));
+                    /* 保存文件的删除前路径以及当前路径 */
+                    // custom.setFilePath(prePath);
+                    custom.setCurrentPath(realPath.replace(preFix, ""));
+                    if (file.isDirectory()) {
+                        custom.setFileSize("-");
+                        custom.setFileType("folder");
+                    } else {
+                        custom.setFileSize(FileUtils.getDataSize(file.length()));
+                        custom.setFileType("file");
+                    }
+                    lists.add(custom);
+                }
+            }
+        }
+        return lists;
+    }
+
+    /**
+     * 上传文件(安卓接口)
+     *
+     * @param request
+     * @param
+     *          //files
+     *            文件
+     * @param currentPath
+     *            当前路径
+     * @throws Exception
+     */
+    public void uploadFilePathExt(HttpServletRequest request, MultipartFile file, String currentPath,String username) throws Exception {
+        String fileName = file.getOriginalFilename();
+        String filePath = getFileName(request, currentPath,username);
+        File distFile = new File(filePath, fileName);
+        if (!distFile.exists()) {
+            file.transferTo(distFile);
+            if ("office".equals(FileUtils.getFileType(distFile))) {
+                try {
+                    String suffix = fileName.substring(fileName.lastIndexOf(".") + 1);
+                    String documentId = FileUtils.getDocClient().createDocument(distFile, fileName, suffix)
+                            .getDocumentId();
+                    OfficeDao.addOffice(documentId, FileUtils.MD5(distFile));
+                } catch (Exception e) {
+                }
+            }
+        }
+        reSize(request);
     }
 
 
